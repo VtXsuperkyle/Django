@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from.forms import CreateUserForm, Loginform
+from.forms import CreateUserForm, LoginForm
 
 # Create your views here.
 
