@@ -2,6 +2,19 @@
 
 {% block content %}
 
-    <h1> Welcome to the Dashboard {{user}}</h1>
+    <br>
+    <h5> Welcome to the Dashboard {{user}}</h5>
+    <hr>
+
+    <a class="btn btn-outline-primary btn-sm" href="{% url 'dashboard' %}">
+        Create record
+    </a>
+
+    <hr>
+    {% for record in records %}
+        {{record.id}}
+        {{record.first_name}}
+        {{record.last_name}}
+    {% endfor %}
 
 {% endblock %}
