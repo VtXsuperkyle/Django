@@ -10,5 +10,14 @@ urlpatterns = [
 
     path('user-logout',views.user_logout, name="user-logout"),
 
+    ############ CRUD ############
+
+    # read
     path('dashboard',views.dashboard, name="dashboard"),
+
+    # create
+    path('create-record', views.create_record, name="create-record"),
+
+    # update
+    path('update-record/<int:pk>', views.update_record,name="update-record"),
 ]

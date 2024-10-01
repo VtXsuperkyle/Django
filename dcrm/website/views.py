@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from.forms import CreateUserForm, LoginForm
+from.forms import CreateUserForm, LoginForm, CreateRecordForm, UpdateRecordForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
@@ -65,3 +65,35 @@ def dashboard(request):
     context = {'records':my_records}
 
     return render(request, 'website/dashboard.html', context=context)
+
+#create a record
+@login_required(login_url='my-login')
+def create_record(request):
+
+    form = CreateRecordForm()
+    if request.method == "POST":
+        form = CreateRecordForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+        
+    context = {'create_form': form}
+    return render(request, 'website/create-record.html', context=context)
+
+# update a record
+@login_required(login_url='my-login')
+def update_record(request, pk):
+
+    record = Record.objects.get(id=pk)
+    form = UpdateRecordForm(instance=record)
+
+    if request.method == "POST":
+        form = UpdateRecordForm(request.POST, instance=record)
+
+        if form.is_valid():
+            form.save()
+            return redirect("dashboard")
+        
+    context = {'update_form': form}
+    return render(request, 'website/update-record.html',context=context)
