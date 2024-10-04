@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Record
 
+from django.contrib import messages
+
 # Create your views here.
 
 
@@ -24,6 +26,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Account created successfully!")
             return redirect('my-login')
 
     context = {'form': form}
@@ -55,6 +58,7 @@ def my_login(request):
 def user_logout(request):
 
     auth.logout(request)
+    messages.success(request, "Logout success!")
     return redirect("my-login")
 
 #dashboard -
@@ -76,6 +80,7 @@ def create_record(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "Your record was created!")
             return redirect("dashboard")
         
     context = {'create_form': form}
@@ -93,7 +98,24 @@ def update_record(request, pk):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "Your record was updated!")
             return redirect("dashboard")
         
     context = {'update_form': form}
     return render(request, 'website/update-record.html',context=context)
+
+# Read a single record
+@login_required(login_url="my-login")
+def singular_record(request,pk):
+
+    one_record = Record.objects.get(id=pk)
+    context = {'record':one_record}
+    return render(request, 'website/view-record.html', context = context)
+
+#delete a record 
+@login_required(login_url='my-login')
+def delete_record(request, pk):
+    record = Record.objects.get(id=pk)
+    record.delete()
+    messages.success(request, "Your record was Deleted!")
+    return redirect("dashboard")

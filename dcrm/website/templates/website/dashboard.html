@@ -45,7 +45,7 @@
                 <td> {{record.address}} </td>
                 <td> {{record.city}} </td>
                 <td> {{record.creation_data}} </td>
-                <td> to do ..</td>
+                <td> <a href="{% url 'record' record.id %}" class="btn btn-secondary"> View</a></td>
             </tr>
             {% endfor %}
         {% endif %}

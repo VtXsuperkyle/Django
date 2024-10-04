@@ -3,3 +3,19 @@
     border-radius: 5px;
     width: 500px;
 }
+
+.card{
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.buttons{
+  
+    text-align: center;
+}
+
+.errorlist{
+    color:red;
+}
