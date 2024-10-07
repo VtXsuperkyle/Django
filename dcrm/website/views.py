@@ -120,7 +120,7 @@ def delete_record(request, pk):
     messages.success(request, "Your record was Deleted!")
     return redirect("dashboard")
 
-#games view
+#cats view
 @login_required(login_url='my-login')
-def games(request):
-    return render(request, 'website/games.html')
+def cats(request):
+    return render(request, 'website/cats.html')

@@ -10,7 +10,20 @@
     margin-top: 50px;
     border-radius: 20px;
 }
-
+.cardbox{
+    margin:auto;
+    text-align: center;
+}
+.card2{
+    width: 400px;
+    margin-top: 50px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 40px;
+}
+.card2 img{
+    height: 350px;
+}
 .buttons{
   
     text-align: center;

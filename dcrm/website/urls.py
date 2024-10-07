@@ -27,6 +27,6 @@ urlpatterns = [
     #delete a record
     path('delete-record/<int:pk>', views.delete_record, name="delete-record"),
 
-    #games
-    path('games',views.games, name="games"),
+    #cats
+    path('cats',views.cats, name="cats"),
 ]
