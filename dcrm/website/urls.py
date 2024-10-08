@@ -29,4 +29,7 @@ urlpatterns = [
 
     #cats
     path('cats',views.cats, name="cats"),
+
+    #game data page
+    path('game-data', views.game_data, name="game-data"),
 ]
