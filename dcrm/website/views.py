@@ -148,12 +148,15 @@ def weather_data(request):
 
         city=request.POST.get("city")
         key=settings.MY_API_KEY
-
+        
+        
+    
         BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q="
 
-        url = BASE_URL + city + "&appid" + key
+        url = BASE_URL + city + "&appid=" + key
 
-        json_data = request.get(url).json() 
+        json_data = requests.get(url).json() 
+        print(json_data)
 
         weather = json_data['weather'][0]['main']
         temperature = int(json_data['main']['temp'] - 273.15)
@@ -175,4 +178,4 @@ def weather_data(request):
 
         return render(request, 'website/weather-data.html',context=context )
     else:
-        return render(request, 'website/weatehr-data.html' )
+        return render(request, 'website/weather-data.html' )
